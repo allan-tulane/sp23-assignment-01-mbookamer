@@ -6,10 +6,25 @@ See assignment-01.pdf for details.
 
 def foo(x):
     ### TODO
+    if x <= 1:
+        return x
+    else:
+        return foo(x-1) + foo(x-2)
     pass
 
 def longest_run(mylist, key):
     ### TODO
+    array = [] #initialize a separate list of consecutive times 'key' appears to return the max
+    count = 0 #base value
+    for i in range(len(mylist)):
+        if key == mylist[i]:
+            count +=1
+        
+        elif (key != mylist[i]) or (i == len(mylist) - 1): #if we reach a new key value OR we are at the end of our list we want to stop
+            array.append(count) #want to save the current number of consecutive key values
+            count = 0 #no longer consecutive so we go back to 0
+            
+    return max(array) #we want the longest run of consecutive values so we take the max value
     pass
 
 
